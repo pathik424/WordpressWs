@@ -25,7 +25,7 @@ jQuery(document).ready(function($){
             contentType: false,
             success: function(response){
 
-                // console.log(response);
+                console.log(response);
                 $('#my-table-result').html(response);
                 },
                 error: function(){

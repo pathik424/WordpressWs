@@ -162,7 +162,32 @@ ob_start();
 
 <script>
 
+//-----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------My search function----------------------------------
 
+
+jQuery('#my-search-form').submit(function(event) {
+    event.preventDefault();
+    var formData = jQuery(this).serialize();
+    jQuery.ajax({
+        url: ajaxurl,
+        type: 'post',
+        data: {
+            action: 'my_search_func', // Action defined in WordPress AJAX hook
+            search_term: jQuery('#my-search-term').val(),
+            // You can add other form data here if needed
+        },
+        success: function(response) {
+            // Update the table content with the returned data
+            jQuery('#my-table-result').html(response);
+        },
+        error: function(xhr, status, error) {
+            console.error("Error fetching data: " + status + " - " + error);
+        }
+    });
+});
+
+//------------------------------------------------------------------------------------------My search function----------------------------------
 //----------------------------------------------------------Registration-------------------------------------------------------------
 
 
@@ -210,13 +235,11 @@ jQuery('#ajaxregform').submit(function(event) {
 
 //----------------------------------------------------------Read-------------------------------------------------------------
 
-
 // Function to fetch table data
 function fetchTableData() {
-    var link = "<?php echo admin_url('admin-ajax.php'); ?>";
     var formData = new FormData();
     formData.append('action', 'fetch_table_data');
-    
+
     jQuery.ajax({
         url: link,
         data: formData,
@@ -226,7 +249,6 @@ function fetchTableData() {
         success: function(data) {
             jQuery('#table-container').html(data);
             // fetchFormData(); // Call function to fetch form data after loading table data
-            
         }
     });
 }
@@ -235,11 +257,11 @@ function fetchTableData() {
 function fetchFormData() {
     var formData = jQuery('#ajaxregform').serializeArray();
     var html = '<h2>Registered User Information</h2><ul>';
-    
+
     formData.forEach(function(input) {
         html += '<li><strong>' + input.name + ':</strong> ' + input.value + '</li>';
     });
-    
+
     html += '</ul>';
     jQuery('#table-container').append(html);
 }
@@ -247,9 +269,9 @@ function fetchFormData() {
 // Function to handle form submission
 jQuery('#ajaxregform').on('submit', function(e) {
     e.preventDefault(); // Prevent default form submission
-    
+
     var formData = jQuery(this).serialize(); // Serialize form data
-    
+
     jQuery.ajax({
         url: link, // Use the same admin-ajax.php URL
         type: 'post',
@@ -260,11 +282,9 @@ jQuery('#ajaxregform').on('submit', function(e) {
         success: function(response) {
             // Handle success response, maybe show a success message
             fetchTableData(); // Reload table data after form submission
-            // event.preventDefault();
         }
     });
 });
-
 
     
     //----------------------------------------------------------Read-------------------------------------------------------------
@@ -390,6 +410,7 @@ jQuery(document).ready(function() {
         
 //----------------------------------------------------------Delete-------------------------------------------------------------
 
+var link = "<?php echo admin_url('admin-ajax.php'); ?>";
 
     // Add event listener to delete buttons
     jQuery(document).on('click', '.delete-button', function() {
@@ -407,7 +428,6 @@ jQuery(document).ready(function() {
     }).then((result) => {
         if (result.isConfirmed) {
             // User confirmed, proceed with deletion
-            var link = "<?php echo admin_url('admin-ajax.php'); ?>";
             var formData = new FormData();
             formData.append('action', 'delete_entry');
             formData.append('ID', id); // Send the ID of the row to be deleted
@@ -428,10 +448,10 @@ jQuery(document).ready(function() {
                         icon: 'success',
                         confirmButtonText: 'OK'
 
-                        }).then((result) => {
+                        }).then(() => {
                     fetchTableData();
                     jQuery('#updateModal').hide();
-                                    location.reload();
+                                    // location.reload();
                     
                   
                     });

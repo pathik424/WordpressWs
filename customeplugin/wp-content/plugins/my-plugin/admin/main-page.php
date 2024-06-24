@@ -16,9 +16,21 @@ $result = $wpdb->get_results($q);
 if (isset($_POST['action']) && $_POST['action'] == 'fetch_table_data') {
     ob_start();
     ?>
-    <table class="wp-list-table widefat fixed striped table-view-list posts">
-        <thead>
-            <td>ID</td>
+    <div class="wrap">
+    <H1>My Users</H1>
+    <div class="my-form">
+        <form action="<?php echo admin_url('admin.php'); ?>" id='my-search-form'>
+            <input type="hidden" name="page" value="my-plugin-page">
+            <input type="text" name="my_serarch_term" id="my-search-term">
+            <input type="submit" value="search" name="search">
+            <input type="submit" value="clear" name="my-plugin-page">
+            <a href="/wordpressWs/customeplugin/ajax-register/" type="button" class="btn btn-primary">Add Employee</a>
+        </form>
+    </div>
+
+        <table class="wp-list-table widefat fixed striped table-view-list posts">
+            <thead>
+                <td>ID</td>
             <td>NAME</td>
             <td>EMAIL</td>
             <td>STATUS</td>
@@ -27,28 +39,24 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch_table_data') {
             <td>CITY</td>
             <td>ACTION</td>
         </thead>
-        <tbody id="my-table-result">
+        <tbody id="">
             <?php
             foreach ($result as $row) :
-            ?>
+                ?>
                 <tr>
-                    <td><?php echo $row->ID; ?></td>
-                    <td><?php echo $row->name; ?></td>
-                    <td><?php echo $row->email; ?></td>
-                    <td><?php echo $row->status; ?></td>
-                    <td><?php echo $row->phone; ?></td>
-                    <td><?php echo $row->username; ?></td>
-                    <td><?php echo $row->city; ?></td>
+                 
+           
                     <td>
                         <button class="btn-update" data-id="<?php echo $row->ID; ?>">Update</button>
                         <button class="delete-button" value=<?php echo $row->ID ?>>Delete</button>
                     </td>
                 </tr>
-            <?php
+                <?php
             endforeach;
             ?>
         </tbody>
     </table>
+    </div>
     <?php
     echo ob_get_clean();
     wp_die();
@@ -77,7 +85,7 @@ ob_start();
 </head>
 <body>
 
-<div class="container">
+<div class="container" >
     <div class="content">
         <img src="https://res.cloudinary.com/debbsefe/image/upload/f_auto,c_fill,dpr_auto,e_grayscale/image_fz7n7w.webp" alt="header-image" class="cld-responsive">
         <h1 class="form-title">Register Here</h1>
@@ -93,7 +101,7 @@ ob_start();
     </div>
 </div>
 
-<div class="wrap">
+<div class="wrap" >
     <H1>My Users</H1>
     <div class="my-form">
         <form action="<?php echo admin_url('admin.php'); ?>" id='my-search-form'>
@@ -107,35 +115,32 @@ ob_start();
     <div id="table-container">
         <table class="wp-list-table widefat fixed striped table-view-list posts">
             <thead>
-                <td>ID</td>
-                <td>NAME</td>
-                <td>EMAIL</td>
-                <td>status</td>
-                <td>phone</td>
-                <td>username</td>
-                <td>city</td>
-                <td>Action</td>
+                <tr>
+                    <th>ID</th>
+                    <th>name</th>
+                    <th>email</th>
+                    <th>status</th>
+                    <th>phone</th>
+                    <th>username</th>
+                    <th>city</th>
+                </tr>
+                
+                <tbody id="my-table-result">
             </thead>
-            <tbody id="my-table-result">
-                <?php
+            <?php
                 foreach ($result as $row) :
                 ?>
                     <tr>
-                        <td><?php echo $row->ID; ?></td>
-                        <td><?php echo $row->name; ?></td>
-                        <td><?php echo $row->email; ?></td>
-                        <td><?php echo $row->status; ?></td>
-                        <td><?php echo $row->phone; ?></td>
-                        <td><?php echo $row->username; ?></td>
-                        <td><?php echo $row->city; ?></td>
-                        <td>
-                            <button class="btn btn-sm btn-update" id="btn-update" data-id="<?php echo $row->ID; ?>">Update</button>
-                            <button class="delete-button" value=<?php echo $row->ID ?> >Delete</button>
-                        </td>
+                       
+                    
                     </tr>
                 <?php
                 endforeach;
                 ?>
+
+             
+            </thead>
+             
             </tbody>
         </table>
     </div>
@@ -161,6 +166,34 @@ ob_start();
 
 
 <script>
+
+
+//------------------------------------------------------------------------------------------My search function----------------------------------
+
+
+
+// jQuery('#my-search-form').submit(function(event) {
+//     event.preventDefault();
+//     var formData = jQuery(this).serialize();
+//     jQuery.ajax({
+//         url: ajaxurl,
+//         type: 'post',
+//         data: {
+//             action: 'my_search_func', // Action defined in WordPress AJAX hook
+//             search_term: jQuery('#my-search-term').val(),
+//             // You can add other form data here if needed
+//         },
+//         success: function(response) {
+//             // Update the table content with the returned data
+//             jQuery('#my-table-result').html(response);
+//         },
+//         error: function(xhr, status, error) {
+//             console.error("Error fetching data: " + status + " - " + error);
+//         }
+//     });
+// });
+
+//------------------------------------------------------------------------------------------My search function----------------------------------
 
 
 //----------------------------------------------------------Registration-------------------------------------------------------------
@@ -210,61 +243,31 @@ jQuery('#ajaxregform').submit(function(event) {
 
 //----------------------------------------------------------Read-------------------------------------------------------------
 
+  // Function to fetch table data
+  function fetchTableData() {
+        var link = "<?php echo admin_url('admin-ajax.php'); ?>";
+        var formData = new FormData();
+        formData.append('action', 'fetch_table_data');
 
-// Function to fetch table data
-function fetchTableData() {
-    var link = "<?php echo admin_url('admin-ajax.php'); ?>";
-    var formData = new FormData();
-    formData.append('action', 'fetch_table_data');
-    
-    jQuery.ajax({
-        url: link,
-        data: formData,
-        processData: false,
-        contentType: false,
-        type: 'post',
-        success: function(data) {
-            jQuery('#table-container').html(data);
-            // fetchFormData(); // Call function to fetch form data after loading table data
-            
-        }
+        jQuery.ajax({
+            url: link,
+            data: formData,
+            processData: false,
+            contentType: false,
+            type: 'post',
+            success: function(data) {
+                jQuery('#table-container').html(data);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching table data: " + status + " - " + error);
+            }
+        });
+    }
+
+    // Fetch table data on page load
+    jQuery(document).ready(function() {
+        fetchTableData();
     });
-}
-
-// Function to fetch form data
-function fetchFormData() {
-    var formData = jQuery('#ajaxregform').serializeArray();
-    var html = '<h2>Registered User Information</h2><ul>';
-    
-    formData.forEach(function(input) {
-        html += '<li><strong>' + input.name + ':</strong> ' + input.value + '</li>';
-    });
-    
-    html += '</ul>';
-    jQuery('#table-container').append(html);
-}
-
-// Function to handle form submission
-jQuery('#ajaxregform').on('submit', function(e) {
-    e.preventDefault(); // Prevent default form submission
-    
-    var formData = jQuery(this).serialize(); // Serialize form data
-    
-    jQuery.ajax({
-        url: link, // Use the same admin-ajax.php URL
-        type: 'post',
-        data: {
-            action: 'process_form_data', // Your PHP function to process form data
-            form_data: formData
-        },
-        success: function(response) {
-            // Handle success response, maybe show a success message
-            fetchTableData(); // Reload table data after form submission
-            // event.preventDefault();
-        }
-    });
-});
-
 
     
     //----------------------------------------------------------Read-------------------------------------------------------------
@@ -355,7 +358,7 @@ jQuery(document).ready(function() {
                 }).then((result) => {
                     fetchTableData();
                     jQuery('#updateModal').hide();
-                                    location.reload();
+                                    // location.reload();
                 });
         },
         error: function(xhr, status, error) {
@@ -391,9 +394,13 @@ jQuery(document).ready(function() {
 //----------------------------------------------------------Delete-------------------------------------------------------------
 
 
-    // Add event listener to delete buttons
-    jQuery(document).on('click', '.delete-button', function() {
+// Add event listener to delete buttons
+jQuery(document).on('click', '.delete-button', function() {
     var id = jQuery(this).val(); // Extract the ID of the row to be deleted
+    var link = "<?php echo admin_url('admin-ajax.php'); ?>";
+    var formData = new FormData();
+    formData.append('action', 'delete_entry');
+    formData.append('ID', id); // Send the ID of the row to be deleted
 
     // Display a confirmation prompt
     Swal.fire({
@@ -403,21 +410,17 @@ jQuery(document).ready(function() {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Yes, delete', 
     }).then((result) => {
         if (result.isConfirmed) {
             // User confirmed, proceed with deletion
-            var link = "<?php echo admin_url('admin-ajax.php'); ?>";
-            var formData = new FormData();
-            formData.append('action', 'delete_entry');
-            formData.append('ID', id); // Send the ID of the row to be deleted
             jQuery.ajax({
                 url: link,
                 data: formData,
                 processData: false,
                 contentType: false,
-                type: 'post',
-                success: function(result) {
+                type: 'POST',
+                success: function(response) {
 
                     // jQuery('#table-container').html(data);
 
@@ -428,13 +431,13 @@ jQuery(document).ready(function() {
                         icon: 'success',
                         confirmButtonText: 'OK'
 
-                        }).then((result) => {
+                        });
                     fetchTableData();
                     jQuery('#updateModal').hide();
-                                    location.reload();
+                                    // location.reload();
                     
                   
-                    });
+                    
                 },
                 error: function(xhr, status, error) {
                     Swal.fire({
@@ -451,6 +454,10 @@ jQuery(document).ready(function() {
 </script>
 
 <style>
+
+
+
+
     html, body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: bisque;

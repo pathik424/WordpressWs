@@ -103,7 +103,7 @@ function my_custom_scripts()
     // wp_enqueue_script('my-ajax-script', get_template_directory_uri() . '/js/my-ajax-script.js', array('jquery'), null, true);
 
     wp_enqueue_script('my-custom-js', $path_js, $dep, $ver, true);
-    wp_add_inline_script('my-custom-js', 'var ajaxUrl =  "' . admin_url('admin-ajax.php') . '";', 'before');
+    wp_add_inline_script('my-custom-js', 'var ajaxUrl =  "' .admin_url('admin-ajax.php'). '";', 'before');
 }
 
 add_action('wp_enqueue_scripts', 'my_custom_scripts');
@@ -264,16 +264,18 @@ function my_plugin_menu()
 add_action('admin_menu', 'my_plugin_menu');
 
 // AJax Calling
+
 add_action('wp_ajax_my_search_func', 'my_search_func');
-add_action('wp_ajax_nopriv_my_search_func', 'my_search_func');
 function my_search_func()
 {
+    // echo 'hi';
+
+    // echo $search_term;
     global $wpdb, $table_prefix;
     $wp_emp = $table_prefix . 'emp';
     $search_term = $_POST['search_term'];
 
-    // for secrh query
-
+    
     if (!empty($search_term)) {
 
         // multiple section serch email phone name
@@ -290,8 +292,8 @@ function my_search_func()
         $q = "SELECT * FROM `$wp_emp`;";
     }
     $results = $wpdb->get_results($q);
-    // echo $search_term;
-    // echo "hi Ajax";
+    
+    
     // echo '<pre>';
     // print_r($results);
     // echo '</pre>';
@@ -313,7 +315,11 @@ function my_search_func()
     endforeach;
 
     echo ob_get_clean();
+
+
     wp_die();
+
+  
 }
 
 add_shortcode('my-data', 'my_table_data');
@@ -592,31 +598,109 @@ add_action('wp_ajax_process_update_entry', 'ajax_process_update_entry');
 
 // start read data ajax
 
+add_action('wp_ajax_fetch_table_data', 'fetch_table_data_callback');
+add_action('wp_ajax_nopriv_fetch_table_data', 'fetch_table_data_callback');
 
-// Add action for processing form data
-add_action('wp_ajax_process_form_data', 'process_form_data');
-add_action('wp_ajax_nopriv_process_form_data', 'process_form_data'); // For non-logged-in users
+function fetch_table_data_callback() {
+    global $wpdb, $table_prefix;
+    $wp_emp = $table_prefix . 'emp';
 
-function process_form_data() {
-    // Process form data here
-    // For example, you can access the form data like this:
-    $form_data = $_POST['form_data'];
+    $q = "SELECT * FROM `$wp_emp`;";
+    $result = $wpdb->get_results($q);
+
+    ob_start();
+    ?>
+    <table class="wp-list-table widefat fixed striped table-view-list posts">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Phone</th>
+                <th>Username</th>
+                <th>City</th>
+                <th style="text-align :center;">Action</th>
+                <th style="text-align :center;">Update</th>
+            </tr>
+        </thead>
+        <tbody id="my-table-result">
+            <?php foreach ($result as $row) : ?>
+                <tr>
+                    <td><?php echo $row->ID; ?></td>
+                    <td><?php echo $row->name; ?></td>
+                    <td><?php echo $row->email; ?></td>
+                    <td><?php echo $row->status; ?></td>
+                    <td><?php echo $row->phone; ?></td>
+                    <td><?php echo $row->username; ?></td>
+                    <td><?php echo $row->city; ?></td>
+                    
+                    <td class="cmn_btn">
+                        <button class="btn-update" id="btn-update" data-id="<?php echo $row->ID; ?>" >Update</button>
+                        <button class="delete-button" value="<?php echo $row->ID; ?>">Delete</button>
+                    </td>
+                    <td></td>
+                </tr>
+                
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <style>
+
+tr {
+    /* display: flex; */
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.cmn_btn {
+    /* display: flex; Use flexbox to align items */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: center; /* Center align items horizontally */
+}
+
+.cmn_btn button {
+    margin-bottom: 10px; /* Margin between buttons */
+    padding: 10px 20px; /* Padding inside the buttons */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Cursor style on hover */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    width: 100px; /* Set width for the buttons */
+}
+
+.btn-update {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+}
+
+.btn-update:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.delete-button {
+    background-color: #f44336; /* Red background */
+    color: white; /* White text */
+}
+
+.delete-button:hover {
+    background-color: #da190b; /* Darker red on hover */
+}
+
+
+    </style>
     
-    // Perform necessary operations with the form data
-    
-    // After processing, you can send back a response if needed
-    $response = array(
-        'success' => true,
-        'message' => 'Form data processed successfully.'
-    );
-
-    // Send response back to the JavaScript
-    echo json_encode($response);
-
-    // Always exit to avoid further execution
+    <?php
+    echo ob_get_clean();
     wp_die();
 }
 
 
 
 // end read data ajax
+
+
+
+//------
+
