@@ -15,16 +15,23 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 
+  <!-- Ensure you have included these in your HTML -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- SweetAlert2 JS -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
+
   <title>Document</title>
 
+</head>
 <body>
-  </head>
-</body>
 
 
 <div class="container">
@@ -44,6 +51,9 @@
     </form>
   </div>
 </div>
+
+
+
 
 
 
@@ -112,6 +122,7 @@
 
   
   // Function to fetch table data
+
   function fetchTableData() {
         var link = "<?php echo admin_url('admin-ajax.php'); ?>";
         var formData = new FormData();
@@ -138,67 +149,68 @@
     });
 
 
+//  // Add event listener to delete buttons
 
+//  jQuery(document).on('click', '.delete-button', function() {
+//     var id = jQuery(this).val(); // Extract the ID of the row to be deleted
+//     var link = "<?php echo admin_url('admin-ajax.php'); ?>";
+//     var formData = new FormData();
+//     formData.append('action', 'user_delete_entry');
+//     formData.append('ID', id); // Send the ID of the row to be deleted
 
-    /// delete user
+//     // Display a confirmation prompt
+//     Swal.fire({
+//         title: 'Are you sure?',
+//         text: 'You are about to delete this entry. This action cannot be undone.',
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonColor: '#3085d6',
+//         cancelButtonColor: '#d33',
+//         confirmButtonText: 'Yes, delete', 
+//     }).then((result) => {
+//         if (result.isConfirmed) {
+//             // User confirmed, proceed with deletion
+//             jQuery.ajax({
+//                 url: link,
+//                 data: formData,
+//                 processData: false,
+//                 contentType: false,
+//                 type: 'POST',
+//                 success: function(response) {
 
-    // Add event listener to delete buttons
-jQuery(document).on('click', '.delete-button', function() {
-    var id = jQuery(this).val(); // Extract the ID of the row to be deleted
-    var link = "<?php echo admin_url('admin-ajax.php'); ?>";
-    var formData = new FormData();
-    formData.append('action', 'user_delete_entry');
-    formData.append('ID', id); // Send the ID of the row to be deleted
+//                     // jQuery('#table-container').html(data);
 
-    // Display a confirmation prompt
-    Swal.fire({
-        title: 'Are you sure?',
-        text: 'You are about to delete this entry. This action cannot be undone.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete', 
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // User confirmed, proceed with deletion
-            jQuery.ajax({
-                url: link,
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-                success: function(response) {
+//                     // Upon successful deletion, fetch and update the table data
+//                     Swal.fire({
+//                         title: 'Success!',
+//                         text: 'Entry deleted successfully.',
+//                         icon: 'success',
+//                         confirmButtonText: 'OK'
 
-                    // jQuery('#table-container').html(data);
-
-                    // Upon successful deletion, fetch and update the table data
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Entry deleted successfully.',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-
-                        });
-                    fetchTableData();
-                    // jQuery('#updateModal').hide();
-                                    // location.reload();
+//                         });
+//                     fetchTableData();
+//                     // jQuery('#updateModal').hide();
+//                                     // location.reload();
                     
                   
                     
-                },
-                error: function(xhr, status, error) {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'There was an error processing your request.',
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    });
-                }
-            });
-        }
-    });
-});
+//                 },
+//                 error: function(xhr, status, error) {
+//                     Swal.fire({
+//                         title: 'Error!',
+//                         text: 'There was an error processing your request.',
+//                         icon: 'error',
+//                         confirmButtonText: 'OK'
+//                     });
+//                 }
+//             });
+//         }
+//     });
+// });
+
+
+
+   
 
 </script>
 
@@ -345,7 +357,14 @@ jQuery(document).on('click', '.delete-button', function() {
 
 
 
-<!----------Designed By Pradeep Singh Tomar------------>
+</body>
+</html>
+
+
+
+
+
+
 <?php
 //---------------------------------------------------------End Registration Data----------------------------------------------------------------------------------}}
 
