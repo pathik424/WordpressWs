@@ -15,6 +15,10 @@ if (!defined('ABSPATH')) {
     die("can't Access");
 }
 
+
+
+//------------------------------------------Start Create Table through Automatic by Plugin---------------------------------------------------------
+
 function my_plugin_activation()
 {
     global $wpdb, $table_prefix;
@@ -29,9 +33,9 @@ function my_plugin_activation()
         `phone` VARCHAR(50) NOT NULL ,`username` VARCHAR(50) NOT NULL,`city` VARCHAR(50) NOT NULL,
         PRIMARY KEY (`ID`)) ENGINE = InnoDB; ";
     $wpdb->query($q);
-
+    
     // insert Data Query
-
+    
     //  $q = "INSERT INTO `$wp_emp` (`name`,`email`,`status`) VALUES ('Pathik', 'p4pathik424@gmail.com',1);";
     $data = array(
         'name' => 'NIrav',
@@ -40,39 +44,46 @@ function my_plugin_activation()
         'phone' => 9904360737,
         'username' => 'nirav1342',
         'city' => 'ahmedabad'
-
-
+        
+        
     );
     $wpdb->insert($wp_emp, $data);
 }
 register_activation_hook(__FILE__, 'my_plugin_activation');
+
+//------------------------------------------End Create Table through Automatic by Plugin---------------------------------------------------------
+
+
+
+//------------------------------------------Start Drop Table through Automatic by Plugin---------------------------------------------------------
 
 function my_plugin_deactivation()
 {
     // Delete Table
     global $wpdb, $table_prefix;
     $wp_emp = $table_prefix . 'emp';
-
+    
     //if Delete Table Karvu hoy to 
     $q = "DROP TABLE `$wp_emp`";
-
+    
     //if TRUNCATE Table Karvu hoy to 
     // $q = "TRUNCATE `$wp_emp`";
-
-
+    
+    
     // $q = 
     $wpdb->query($q);
 }
 register_deactivation_hook(__FILE__, 'my_plugin_deactivation');
 
+//------------------------------------------End Drop Table through Automatic by Plugin---------------------------------------------------------
 
 // shorcode create thase
 // function my_shortcode($atts)
 // {
-//     array_change_key_case((array) $atts, CASE_LOWER);
-
-//     $atts = shortcode_atts(array(
-//         'type' => 'img_gallery.php', 'slider.php' // [customeplugin type = "slider"] short code ma je lakhis e avse
+    //     array_change_key_case((array) $atts, CASE_LOWER);
+    
+    //     $atts = shortcode_atts(array(
+        //         'type' => 'img_gallery.php', 'slider.php' // [customeplugin type = "slider"] short code ma je lakhis e avse
 //     ), $atts);
 
 //     // File Attached Kari
@@ -88,41 +99,61 @@ register_deactivation_hook(__FILE__, 'my_plugin_deactivation');
 //js file include karva mate
 
 
+//------------------------------------------Start JS Attached by Custom Plugin---------------------------------------------------------
+
 function my_custom_scripts()
 {
+    
+    // Paths to Bootstrap CSS and JS
+    $bootstrap_css = 'https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css';
+    $popper_js = 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js';
+    $bootstrap_js = 'https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js';
+    
+    // Enqueue Bootstrap CSS
+    wp_enqueue_style('bootstrap-css', $bootstrap_css);
 
+    // Enqueue Popper.js
+    wp_enqueue_script('popper-js', $popper_js, array('jquery'), null, true);
+    
+    // Enqueue Bootstrap JS
+    wp_enqueue_script('bootstrap-js', $bootstrap_js, array('jquery', 'popper-js'), null, true);
     $path_js = plugins_url('js/main.js', __FILE__);
     $path_style = plugins_url('js/main.js', __FILE__);
     $dep = array('jquery');
     $ver = filemtime(plugin_dir_path(__FILE__) . 'js/main.js');
     $ver_style = filemtime(plugin_dir_path(__FILE__) . 'css/style.css');
     $is_login = is_user_logged_in() ? 1 : 0;
-
+    
     wp_enqueue_style('my-custom-style', $path_style, '', $ver_style);
-
+    
     // wp_enqueue_script('my-ajax-script', get_template_directory_uri() . '/js/my-ajax-script.js', array('jquery'), null, true);
 
     wp_enqueue_script('my-custom-js', $path_js, $dep, $ver, true);
-    wp_add_inline_script('my-custom-js', 'var ajaxUrl =  "' .admin_url('admin-ajax.php'). '";', 'before');
+    wp_add_inline_script('my-custom-js', 'var ajaxUrl =  "' . admin_url('admin-ajax.php') . '";', 'before');
 }
 
 add_action('wp_enqueue_scripts', 'my_custom_scripts');
 add_action('admin_enqueue_scripts', 'my_custom_scripts');
 
+//------------------------------------------End JS Attached by Custom Plugin---------------------------------------------------------
+
+
+
+//------------------------------------------Start Shorcut for read data-------------------------------------------------------------------
 function my_shortcode()
 {
     global $wpdb, $table_prefix;
     $wp_emp = $table_prefix . 'emp';
-
+    
     $q = "SELECT * FROM `$wp_emp` WHERE `status` = 0;";
     $result = $wpdb->get_results($q);
-
+    
     // echo "<pre>";
     // print_r($result);
     // echo "</pre>";
 
     ob_start();
-?>
+    ?>
 
     <table>
         <thead>
@@ -134,12 +165,12 @@ function my_shortcode()
             <td>phone</td>
             <td>username</td>
             <td>city</td>
-
+            
         </thead>
         <tbody>
             <?php
             foreach ($result as $row) :
-            ?>
+                ?>
                 <tr>
                     <td><?php echo $row->ID; ?></td>
                     <td><?php echo $row->name; ?></td>
@@ -149,19 +180,23 @@ function my_shortcode()
                     <td><?php echo $row->username; ?></td>
                     <td><?php echo $row->city; ?></td>
                 </tr>
-            <?php
+                <?php
             endforeach;
             ?>
         </tbody>
     </table>
-<?php
+    <?php
     $html = ob_get_clean();
-
+    
     return $html;
 }
 add_shortcode('customeplugin', 'my_shortcode');
 
 
+//------------------------------------------End Shorcut for read data-------------------------------------------------------------------
+
+
+//------------------------------------------STart My Post Read data------------------------------------------------------------------------
 function my_posts()
 {
     $args = array(
@@ -176,7 +211,7 @@ function my_posts()
         //    's' => 'Dog Smell'           // koi word thi search karvu hoy to
     );
     $query = new Wp_Query($args);
-
+    
     ob_start();
     if ($query->have_posts());
 ?>
@@ -189,18 +224,19 @@ function my_posts()
         ?>
     </ul>
     <?php echo wp_pagenavi(); ?>
-
-
-
+    
+    
+    
     <?php
 
 
-    wp_reset_postdata();
+wp_reset_postdata();
     $html = ob_get_clean();
     return $html;
 }
 add_shortcode('my-posts', 'my_posts');
 
+//------------------------------------------End My Post Read data------------------------------------------------------------------------
 
 // post ketli var read thai che ena mate
 // function head_fun()
@@ -224,7 +260,17 @@ add_shortcode('my-posts', 'my_posts');
 // add_action('wp_head', 'head_fun');
 
 
+//----------------------------------------------------------Start My cutome Page connection ------------------------------------------------------
+
 // menu add karva mate 
+
+
+
+function my_user_page_func()
+{
+    // echo 'hi';
+    include 'admin/my-user-page.php';
+}
 
 function my_plugin_page_func()
 {
@@ -236,11 +282,22 @@ function my_plugin_subpage_fun()
     // echo 'hi';
     include 'admin/main-page.php';
 }
+function my_table_data()
+{
+    include('admin/main-page.php');
+}
+
+//----------------------------------------------------------End Mycutome Page Connection------------------------------------------------------
+
+
+//----------------------------------------------------------STart Mycutome Page Add in Admin------------------------------------------------------
+
 function my_plugin_menu()
 {
-
-    // Main Menu ::
+    
+    // Main Menu My plugin ::
     add_menu_page('My Plugin Page', 'My Plugin Page', 'manage_options', 'my-plugin-page', 'my_plugin_page_func', '', 6);
+    
 
     //https://www.youtube.com/watch?v=nCgiEe2sOzE&list=PLa9NMvQUMD5c85kY0q6X15RTM8zm0s9H7&index=9
     // My Plugin Page :  e page che
@@ -250,18 +307,31 @@ function my_plugin_menu()
     // my-plugin-page-func : function name {game te api sako}
     // '' e icon mate che jo a rakhaso to default icon wordpress nu hase e j avi jase
     // 6 e position che kya dekhadvu che
-
-
-    // sub menu ::
-
+    
+    
+    // sub menu my plugin ::
+    
     add_submenu_page('my-plugin-page', 'All Emp', 'All Emp', 'manage_options', 'my-plugin-page', 'my_plugin_page_func');
-
+    
     add_submenu_page('my-plugin-page', 'My Plugin Sub Page', 'My Plugin Sub Page', 'manage_options', 'my-plugin-subpage', 'my_plugin_subpage_fun');
-
+    
     // my-plugin-page : menu page ma je slug ni andar joi che e  
-
+    
+    // User Menu
+    
+    add_menu_page('My User Page', 'My User Page', 'manage_options', 'my-user-page', 'my_user_page_func', '', 6);
+    
+    // sub menu my plugin ::
+    add_submenu_page('my-user-page', 'All User', 'All User', 'manage_options', 'my-user-page', 'my_user_page_func');
+    
+    add_submenu_page('my-user-page', 'My User Sub Page', 'My User Sub Page', 'manage_options', 'my-user-subpage', 'my_user_subpage_fun');
+    
 }
 add_action('admin_menu', 'my_plugin_menu');
+
+//----------------------------------------------------------End Mycutome Page Add in Admin------------------------------------------------------
+
+//----------------------------------------------------------Start My Search Function--------------------------------------------------------------
 
 // AJax Calling
 
@@ -269,15 +339,15 @@ add_action('wp_ajax_my_search_func', 'my_search_func');
 function my_search_func()
 {
     // echo 'hi';
-
+    
     // echo $search_term;
     global $wpdb, $table_prefix;
     $wp_emp = $table_prefix . 'emp';
     $search_term = $_POST['search_term'];
-
+    
     
     if (!empty($search_term)) {
-
+        
         // multiple section serch email phone name
 
         $q = "SELECT * FROM `$wp_emp` WHERE
@@ -287,21 +357,21 @@ function my_search_func()
           OR `phone` LIKE '%" . $search_term . "%'
           OR `username` LIKE '%" . $search_term . "%'
           OR `city` LIKE '%" . $search_term . "%'
-        ;";
-    } else {
-        $q = "SELECT * FROM `$wp_emp`;";
-    }
-    $results = $wpdb->get_results($q);
-    
-    
-    // echo '<pre>';
-    // print_r($results);
-    // echo '</pre>';
-
-    ob_start();
-
-    foreach ($results as $row) :
-    ?>
+          ;";
+        } else {
+            $q = "SELECT * FROM `$wp_emp`;";
+        }
+        $results = $wpdb->get_results($q);
+        
+        
+        // echo '<pre>';
+        // print_r($results);
+        // echo '</pre>';
+        
+        ob_start();
+        
+        foreach ($results as $row) :
+            ?>
         <tr>
             <td><?php echo $row->ID; ?></td>
             <td><?php echo $row->name; ?></td>
@@ -311,25 +381,26 @@ function my_search_func()
             <td><?php echo $row->username; ?></td>
             <td><?php echo $row->city; ?></td>
         </tr>
-<?php
+        <?php
     endforeach;
-
+    
     echo ob_get_clean();
-
-
+    
+    
     wp_die();
-
-  
 }
 
 add_shortcode('my-data', 'my_table_data');
-function my_table_data()
-{
-    include('admin/main-page.php');
-}
+
+
+//----------------------------------------------------------End My Search Function--------------------------------------------------------------
+
+
+
 
 // for custome post type 
 
+//-----------------------------------------------------Start Register Function add by default functionality in Wordpress-------------------
 function register_my_cpt()
 {
     $labels = array(
@@ -346,23 +417,23 @@ function register_my_cpt()
         'supports' => $supports,
         'taxonomies' => array('car_types'),
         'publicly_queryable' => true,
-
-
+        
+        
     );
-
+    
     register_post_type('cars', $options);
 }
 add_action('init', 'register_my_cpt');
 
 function register_car_types()
 {
-
+    
     $labels = array(
         'name' => 'Car Type',
         'singular_name' => 'Car Type'
     );
-
-
+    
+    
     $options = array(
         'labels' => $labels,
         'hierarchical' => true,
@@ -374,86 +445,86 @@ function register_car_types()
 add_action('init', 'register_car_types');
 
 
+//-----------------------------------------------------End Register Function add by default functionality in Wordpress-------------------
 function my_register_form()
 {
     ob_start();
     include 'public/register.php';
     return ob_get_clean();
 }
-add_shortcode('my-register-form','my_register_form');
+add_shortcode('my-register-form', 'my_register_form');
+
+
+
 // function my_ajaxregister_form()
 // {
-    //     ob_start();
-    //     include 'public/ajaxregister.php';
-    //     return ob_get_clean();
-    // }
-    // add_shortcode('my-ajaxregister-form','my_ajaxregister_form');
-    
-    function my_login_form()
-    {
-        ob_start();
-        include 'public/login.php';
-        return ob_get_clean();
-    }
-    add_shortcode('my-login-form','my_login_form');
+//     ob_start();
+//     include 'public/ajaxregister.php';
+//     return ob_get_clean();
+// }
+// add_shortcode('my-ajaxregister-form','my_ajaxregister_form');
+
+function my_login_form()
+{
+    ob_start();
+    include 'public/login.php';
+    return ob_get_clean();
+}
+add_shortcode('my-login-form', 'my_login_form');
 
 function my_login()
 {
-    if(isset($_POST['user_login'])){
-        
+    if (isset($_POST['user_login'])) {
+
         $username = esc_sql($_POST['username']);
         $pass = esc_sql($_POST['pass']);
-        
+
         $credentials = array(
             'user_login' => $username,
             'user_password' => $pass,
-            
+
         );
         $user = wp_signon($credentials);
-        
-        if(!is_wp_error($user)){
-            
+
+        if (!is_wp_error($user)) {
+
             // echo '<pre>';
             // print_r($user);
             // echo '</pre>';
-            
-            if($user->roles[0] == 'administrator')
-            {
+
+            if ($user->roles[0] == 'administrator') {
                 wp_redirect(admin_url());
                 exit;
-            }
-            else{
+            } else {
                 wp_redirect(site_url('profile'));
                 exit;
             }
-            
-        }
-        else{
+        } else {
             echo $user->get_error_message();
         }
     }
 }
-add_action('template_redirect','my_login');
+add_action('template_redirect', 'my_login');
 
-function my_profile(){
+function my_profile()
+{
 
     ob_start();
 
     include 'public/profile.php';
     return ob_get_clean();
-
-
 }
-add_shortcode('my-profile','my_profile');
+add_shortcode('my-profile', 'my_profile');
 
-//ajax calling
+//ajax calling INSERT
 
-add_action('wp_ajax_contact_us','ajax_contact_us');
+add_action('wp_ajax_contact_us', 'ajax_contact_us');
 
 // main.php ma connection apyu 
-function ajax_contact_us(){
-    $arr =[];
-    wp_parse_str($_POST['contact_us'],$arr);
+function ajax_contact_us()
+{
+    $arr = [];
+    wp_parse_str($_POST['contact_us'], $arr);
     // echo '<pre>';
     // print_r($arr);
     // echo '</pre>';
@@ -461,17 +532,70 @@ function ajax_contact_us(){
     // databse connection apyu
     global $wpdb, $table_prefix;
     $table = $table_prefix . 'emp';
-    $result = $wpdb->insert($table,[
+    $result = $wpdb->insert($table, [
 
-       "name" => $arr['name'],
-       "email" => $arr['email'],
-       "status" => $arr['status'],
-       "phone" => $arr['phone'],
-       "username" => $arr['username'],
-       "city" => $arr['city'],
+        "name" => $arr['name'],
+        "email" => $arr['email'],
+        "status" => $arr['status'],
+        "phone" => $arr['phone'],
+        "username" => $arr['username'],
+        "city" => $arr['city'],
     ]);
     wp_send_json_success($result);
 }
+
+
+add_action('wp_ajax_user_us', 'ajax_user_us');
+
+function ajax_user_us() {
+    // Ensure this is an AJAX request
+    if (!defined('DOING_AJAX') || !DOING_AJAX) {
+        wp_send_json_error('Not an AJAX request.');
+    }
+
+    $arr = [];
+    wp_parse_str($_POST['user_us'], $arr);
+
+    // Check for required fields
+    if (empty($arr['display_name']) || empty($arr['user_login']) || empty($arr['user_nicename']) || empty($arr['user_email']) || empty($arr['user_pass'])) {
+        wp_send_json_error('Missing required fields.');
+    }
+
+    // Sanitize and validate input
+    $display_name = sanitize_text_field($arr['display_name']);
+    $user_login = sanitize_user($arr['user_login']);
+    $user_nicename = sanitize_text_field($arr['user_nicename']);
+    $user_email = sanitize_email($arr['user_email']);
+    $user_pass = wp_hash_password($arr['user_pass']); // Hash the password
+
+    // Validate email
+    if (!is_email($user_email)) {
+        wp_send_json_error('Invalid email address.');
+    }
+
+    // Check if username or email already exists
+    if (username_exists($user_login) || email_exists($user_email)) {
+        wp_send_json_error('Username or email already exists.');
+    }
+
+    global $wpdb, $table_prefix;
+    $table = $table_prefix . 'users';
+    $result = $wpdb->insert($table, [
+        "display_name" => $display_name,
+        "user_login" => $user_login,
+        "user_nicename" => $user_nicename,
+        "user_email" => $user_email,
+        "user_pass" => $user_pass,
+    ]);
+
+    if ($result) {
+        wp_send_json_success('User registered successfully.');
+    } else {
+        wp_send_json_error('User registration failed.');
+    }
+}
+
+
 
 
 
@@ -486,26 +610,25 @@ function my_check_redirect()
     if ($is_user_logged_in && (is_page('login') || is_page('register'))) {
         wp_redirect(site_url('profile'));
         exit;
-    }
-    elseif(!$is_user_logged_in && is_page('profile')){
+    } elseif (!$is_user_logged_in && is_page('profile')) {
         wp_redirect(site_url('login'));
         exit;
     }
-    
 }
 add_action('template_redirect', 'my_check_redirect');
 
-function redirect_after_logout(){
+function redirect_after_logout()
+{
 
     wp_redirect(site_url('login'));
     exit;
-
 }
 add_action('wp_logout', 'redirect_after_logout');
 
 
 // start delete data ajax
-function ajax_delete_entry() {
+function ajax_delete_entry()
+{
     // Check if the ID parameter is set
     if (isset($_POST['ID'])) {
         // Sanitize and retrieve the ID of the entry to be deleted
@@ -534,13 +657,14 @@ function ajax_delete_entry() {
 add_action('wp_ajax_delete_entry', 'ajax_delete_entry');
 
 
- 
+
 // end delete data ajax
 
 
 // start update data ajax
 
-function ajax_update_entry() {
+function ajax_update_entry()
+{
     if (isset($_POST['ID'])) {
         $entry_id = intval($_POST['ID']);
 
@@ -560,7 +684,8 @@ function ajax_update_entry() {
 }
 add_action('wp_ajax_update_entry', 'ajax_update_entry');
 
-function ajax_process_update_entry() {
+function ajax_process_update_entry()
+{
     global $wpdb, $table_prefix;
     $wp_emp = $table_prefix . 'emp'; // Define $wp_emp here
 
@@ -601,7 +726,10 @@ add_action('wp_ajax_process_update_entry', 'ajax_process_update_entry');
 add_action('wp_ajax_fetch_table_data', 'fetch_table_data_callback');
 add_action('wp_ajax_nopriv_fetch_table_data', 'fetch_table_data_callback');
 
-function fetch_table_data_callback() {
+
+
+function fetch_table_data_callback()
+{
     global $wpdb, $table_prefix;
     $wp_emp = $table_prefix . 'emp';
 
@@ -610,97 +738,331 @@ function fetch_table_data_callback() {
 
     ob_start();
     ?>
-    <table class="wp-list-table widefat fixed striped table-view-list posts">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>Phone</th>
-                <th>Username</th>
-                <th>City</th>
-                <th style="text-align :center;">Action</th>
-                <th style="text-align :center;">Update</th>
-            </tr>
-        </thead>
-        <tbody id="my-table-result">
-            <?php foreach ($result as $row) : ?>
-                <tr>
-                    <td><?php echo $row->ID; ?></td>
-                    <td><?php echo $row->name; ?></td>
-                    <td><?php echo $row->email; ?></td>
-                    <td><?php echo $row->status; ?></td>
-                    <td><?php echo $row->phone; ?></td>
-                    <td><?php echo $row->username; ?></td>
-                    <td><?php echo $row->city; ?></td>
-                    
-                    <td class="cmn_btn">
-                        <button class="btn-update" id="btn-update" data-id="<?php echo $row->ID; ?>" >Update</button>
-                        <button class="delete-button" value="<?php echo $row->ID; ?>">Delete</button>
-                    </td>
-                    <td></td>
-                </tr>
-                
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Document</title>
+    </head>
+
+    <body>
+
+
+        <table class="wp-list-table widefat fixed striped table-view-list posts">
+
+            <div class="wrap">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Phone</th>
+                        <th>Username</th>
+                        <th>City</th>
+
+                        <th style="text-align :center;">User Action</th>
+                        <th style="text-align :center;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="my-table-result">
+                    <?php foreach ($result as $row) : ?>
+                        <tr>
+                            <td><?php echo $row->ID; ?></td>
+                            <td><?php echo $row->name; ?></td>
+                            <td><?php echo $row->email; ?></td>
+                            <td><?php echo $row->status; ?></td>
+                            <td><?php echo $row->phone; ?></td>
+                            <td><?php echo $row->username; ?></td>
+                            <td><?php echo $row->city; ?></td>
+                        
+
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action on User </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Active User</a>
+                                        <a class="dropdown-item" href="#">De-active User</a>
+                                        <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="cmn_btn">
+                                <button class="btn-update" id="btn-update" data-id="<?php echo $row->ID; ?>">Update</button>
+                                <button class="delete-button" value="<?php echo $row->ID; ?>">Delete</button>
+                            </td>
+                        </tr>
+
+                    <?php endforeach; ?>
+                </tbody>
+        </table>
+
+    </body>
+
+    </html>
     <style>
+        .dropdown button#dropdownMenuButton {
+            width: 100%;
+        }
 
-tr {
-    /* display: flex; */
-    align-items: center;
-    /* justify-content: space-between; */
-}
+        tr {
+            /* display: flex; */
+            align-items: center;
+            /* justify-content: space-between; */
+        }
 
-.cmn_btn {
-    /* display: flex; Use flexbox to align items */
-    flex-direction: column; /* Arrange items in a column */
-    align-items: center; /* Center align items horizontally */
-}
+        .cmn_btn {
+            /* display: flex; Use flexbox to align items */
+            flex-direction: column;
+            /* Arrange items in a column */
+            align-items: center;
+            /* Center align items horizontally */
+        }
 
-.cmn_btn button {
-    margin-bottom: 10px; /* Margin between buttons */
-    padding: 10px 20px; /* Padding inside the buttons */
-    border: none; /* Remove default border */
-    cursor: pointer; /* Cursor style on hover */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Font size */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    width: 100px; /* Set width for the buttons */
-}
+        .cmn_btn button {
+            margin-bottom: 10px;
+            /* Margin between buttons */
+            padding: 10px 20px;
+            /* Padding inside the buttons */
+            border: none;
+            /* Remove default border */
+            cursor: pointer;
+            /* Cursor style on hover */
+            border-radius: 5px;
+            /* Rounded corners */
+            font-size: 16px;
+            /* Font size */
+            transition: background-color 0.3s ease;
+            /* Smooth transition for background color */
+            width: 100px;
+            /* Set width for the buttons */
+        }
 
-.btn-update {
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
-}
+        .btn-update {
+            background-color: #4CAF50;
+            /* Green background */
+            color: white;
+            /* White text */
+        }
 
-.btn-update:hover {
-    background-color: #45a049; /* Darker green on hover */
-}
+        .btn-update:hover {
+            background-color: #45a049;
+            /* Darker green on hover */
+        }
 
-.delete-button {
-    background-color: #f44336; /* Red background */
-    color: white; /* White text */
-}
+        .delete-button {
+            background-color: #f44336;
+            /* Red background */
+            color: white;
+            /* White text */
+        }
 
-.delete-button:hover {
-    background-color: #da190b; /* Darker red on hover */
-}
-
-
+        .delete-button:hover {
+            background-color: #da190b;
+            /* Darker red on hover */
+        }
     </style>
-    
-    <?php
+
+<?php
     echo ob_get_clean();
     wp_die();
 }
 
 
 
-// end read data ajax
+// star read data ajax
+add_action('wp_ajax_fetch_user_table_data', 'fetch_user_table_data_callback');
+add_action('wp_ajax_nopriv_fetch_user_table_data', 'fetch_user_table_data_callback');
+
+
+
+function fetch_user_table_data_callback()
+{
+    global $wpdb, $table_prefix;
+    $wp_users = $table_prefix . 'users';
+
+    $q = "SELECT * FROM `$wp_users`;";
+    $result = $wpdb->get_results($q);
+
+    ob_start();
+    ?>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Document</title>
+    </head>
+
+    <body>
+
+
+        <table class="wp-list-table widefat fixed striped table-view-list posts">
+
+            <div class="wrap">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Display Name</th>
+                        <th>User Login</th>
+                        <th>User Nicename</th>
+                        <th>User Email</th>
+                        <th>Password</th>
+                       
+
+                        <th style="text-align :center;">User Action</th>
+                        <th style="text-align :center;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="my-table-result">
+                    <?php foreach ($result as $row) : ?>
+                        <tr>
+                            <td><?php echo $row->ID; ?></td>
+                            <td><?php echo $row->display_name; ?></td>
+                            <td><?php echo $row->user_login; ?></td>
+                            <td><?php echo $row->user_nicename; ?></td>
+                            <td><?php echo $row->user_email; ?></td>
+                            <td><?php echo $row->user_pass; ?></td>
+                    
+                        
+
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action on User </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Active User</a>
+                                        <a class="dropdown-item" href="#">De-active User</a>
+                                        <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="cmn_btn">
+                                <button class="btn-update" id="btn-update" data-id="<?php echo $row->ID; ?>">Update</button>
+                                <button class="delete-button" value="<?php echo $row->ID; ?>">Delete</button>
+                            </td>
+                        </tr>
+
+                    <?php endforeach; ?>
+                </tbody>
+        </table>
+
+    </body>
+
+    </html>
+    <style>
+        .dropdown button#dropdownMenuButton {
+            width: 100%;
+        }
+
+        tr {
+            /* display: flex; */
+            align-items: center;
+            /* justify-content: space-between; */
+        }
+
+        .cmn_btn {
+            /* display: flex; Use flexbox to align items */
+            flex-direction: column;
+            /* Arrange items in a column */
+            align-items: center;
+            /* Center align items horizontally */
+        }
+
+        .cmn_btn button {
+            margin-bottom: 10px;
+            /* Margin between buttons */
+            padding: 10px 20px;
+            /* Padding inside the buttons */
+            border: none;
+            /* Remove default border */
+            cursor: pointer;
+            /* Cursor style on hover */
+            border-radius: 5px;
+            /* Rounded corners */
+            font-size: 16px;
+            /* Font size */
+            transition: background-color 0.3s ease;
+            /* Smooth transition for background color */
+            width: 100px;
+            /* Set width for the buttons */
+        }
+
+        .btn-update {
+            background-color: #4CAF50;
+            /* Green background */
+            color: white;
+            /* White text */
+        }
+
+        .btn-update:hover {
+            background-color: #45a049;
+            /* Darker green on hover */
+        }
+
+        .delete-button {
+            background-color: #f44336;
+            /* Red background */
+            color: white;
+            /* White text */
+        }
+
+        .delete-button:hover {
+            background-color: #da190b;
+            /* Darker red on hover */
+        }
+    </style>
+
+<?php
+    echo ob_get_clean();
+    wp_die();
+}
+
+
+
+// end  user read data ajax
+
+
+// start user delete data ajax
+function ajax_user_delete_entry()
+{
+    // Check if the ID parameter is set
+    if (isset($_POST['ID'])) {
+        // Sanitize and retrieve the ID of the entry to be deleted
+        $entry_id = intval($_POST['ID']);
+
+        // Database connection
+        global $wpdb, $table_prefix;
+        $table = $table_prefix . 'users';
+
+        // Delete the entry from the database
+        $result = $wpdb->delete($table, array('ID' => $entry_id));
+
+        // Check if deletion was successful
+        if ($result !== false) {
+            // Return success message
+            wp_send_json_success('Entry deleted successfully.');
+        } else {
+            // Return error message
+            wp_send_json_error('Failed to delete entry.');
+        }
+    } else {
+        // Return error if ID parameter is not set
+        wp_send_json_error('ID parameter is missing.');
+    }
+}
+add_action('wp_ajax_user_delete_entry', 'ajax_user_delete_entry');
+
+
+
+// end user delete data ajax
 
 
 
 //------
-

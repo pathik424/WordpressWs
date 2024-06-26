@@ -12,10 +12,15 @@ if (isset($_GET['my_serarch_term'])) {
 
 $result = $wpdb->get_results($q);
 
+
+
+
 // Handle AJAX request for fetching updated table data
 if (isset($_POST['action']) && $_POST['action'] == 'fetch_table_data') {
     ob_start();
     ?>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <div class="wrap">
     <H1>My Users</H1>
     <div class="my-form">
@@ -116,13 +121,8 @@ ob_start();
         <table class="wp-list-table widefat fixed striped table-view-list posts">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>name</th>
-                    <th>email</th>
-                    <th>status</th>
-                    <th>phone</th>
-                    <th>username</th>
-                    <th>city</th>
+                 
+                  
                 </tr>
                 
                 <tbody id="my-table-result">
