@@ -260,7 +260,7 @@
   }
 
   input[type=text],
-  [type=email] {
+  input[type=email],input[type=password] {
     border: none;
     border-bottom: 1px solid black;
     outline: none;
