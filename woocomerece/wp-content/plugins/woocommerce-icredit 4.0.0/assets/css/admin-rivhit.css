@@ -1,0 +1,47 @@
+.invoice-button-small {display: block;position: relative;padding: 2px 0!important;height: 2em!important;width: 2em;border:none !important;background: url('../images/icon-pdf.png') center center no-repeat !important;text-indent: -9999px;}
+.invoice-button {margin:10px 10px 5px 10px !important;}
+#icreditAdminFieldsSections {position:relative;height:40px;}
+#icreditAdminFieldsSections ul {width: 100%;max-width: 100%;list-style-type:none;padding: 0 0 2px;border-bottom: 1px solid #000;}
+#icreditAdminFieldsSections ul li {margin-bottom:0;display:inline-block!important;}
+#icreditAdminFieldsSections ul li a {float:none!important;top: 1px;position: relative;}
+.icreditAdminFields #mainform h2,.icreditAdminFields #mainform h3, .icreditAdminFields #mainform .form-table {display:none;}
+.icreditAdminFields #mainform h2:first-child,.icreditAdminFields #mainform h3:first-child, .icreditAdminFields #mainform .form-table:first-child,
+.icreditAdminFields #mainform h2.activeTab,.icreditAdminFields #mainform h3.activeTab, .icreditAdminFields #mainform .form-table.activeTab {display:block;}
+.icreditAdminFields p.submit {border-top: 1px solid #000!important;padding: 10px 0 0!important;}
+.mainTopTitleIcredit {display: flex!important;align-items: center;vertical-align: middle;justify-content: space-between;justify-items: center;width: 100%;max-width: 100%;flex-wrap: wrap;flex-direction: row;}
+.mainTopTitleIcredit a.rivhitLink {display:inline-block;}
+#icreditAdminFieldsSections .nav-tab-active {margin-bottom:0!important;}
+.adminRichitLogo {position:relative;}
+.adminRichitLogo figure {margin:0 0 20px!important;}
+.adminRichitLogo a.rivhitLink {display:inline-block;}
+/*metabox*/
+#metaboxRivhit {}
+.metaboxRivhitInner {}
+.metaboxRivhitInner figure {margin: 0;text-align: right;display: block;}
+.metaboxRivhitInner img.icon_rivhit {width:90px;height:30px;}
+.metaboxRivhitInner img.icon_label {width:52px;height:32px;}
+.metaboxRivhitInner > div {border-bottom:1px solid #eee;}
+.wrapper_icredit_card_template {}
+.wrapper_icredit_card_template_inner {}
+.wrapper_icredit_card_template_inner > div {font-family: Arial,sans-serif;font-weight: 600;font-size: 16px;}
+.wrapper_icredit_card_template_inner > div p {}
+.wrapper_icredit_card_template_inner > div h5 {}
+.titledesc label[for='woocommerce_icredit_payment_field_firstname'] {display:none!important;}
+.titledesc label[for='woocommerce_icredit_payment_field_lastname'] {display:none!important;}
+.titledesc label[for='woocommerce_icredit_payment_field_email'] {display:none!important;}
+.titledesc label[for='woocommerce_icredit_payment_field_address'] {display:none!important;}
+.titledesc label[for='woocommerce_icredit_payment_field_city'] {display:none!important;}
+.titledesc label[for='woocommerce_icredit_payment_field_zipcode'] {display:none!important;}
+.titledesc label[for='woocommerce_icredit_payment_field_phonenumber'] {display:none!important;}
+.titledesc label[for='woocommerce_icredit_payment_field_companyname'] {display:none!important;}
+.titledesc label[for='woocommerce_icredit_payment_user_comments'] {display:none!important;}
+.titledesc label[for='woocommerce_icredit_payment_do_logging'] {display:none!important;}
+.titledesc label[for='woocommerce_icredit_payment_do_logging_requests'] {display:none!important;}
+.btnRivhit {display: inline-block;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;border: 1px solid transparent;padding: 0.375rem 0.75rem;font-size: 1rem;line-height: 1.5;border-radius: 0.25rem;transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+#chargeTokenRivhit {color: #000;background-color: #F0EDE8;border-color: #007bff;font-weight: 700;font-size: 18px;font-family: sans-serif;border-width: 4px;}
+#chargeTokenRivhit:hover {color: #fff;background-color: #0069d9;border-color: #0062cc;}
+.rivghitSectionThird h4 span {background: #FFE185;padding: 1px;font-size: 18px;}
+.Card-number {padding:0;font-size: 20px;font-weight:700;}
+.title_credit_details {display:flex;flex-wrap:wrap;flex-direction:row;justify-content:flex-start;align-items:center;width:100%;max-width:100%;}
+.title_credit_details > div {flex:1 0 100%;width:100%;max-width:100%;margin-bottom:10px;}
+.title_credit_details h3 {margin:0 !important;}

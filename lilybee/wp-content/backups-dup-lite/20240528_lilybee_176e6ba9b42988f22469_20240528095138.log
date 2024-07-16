@@ -1,0 +1,73 @@
+********************************************************************************
+DUPLICATOR-LITE PACKAGE-LOG: May 28, 2024 9:51 am
+NOTICE: Do NOT post to public sites or forums 
+********************************************************************************
+VERSION:	1.5.9
+WORDPRESS:	6.4.4
+PHP INFO:	8.1.27 | SAPI: litespeed
+SERVER:		LiteSpeed 
+PHP TIME LIMIT: (0) no time limit imposed 
+PHP MAX MEMORY: 4294967296 (512M default) 
+MEMORY STACK: 14MB
+
+********************************************************************************
+DATABASE:
+********************************************************************************
+BUILD MODE:   MYSQLDUMP
+MYSQLTIMEOUT: 5000
+MYSQLDUMP:    Is Supported
+SQL CREATED: 20240528_lilybee_176e6ba9b42988f22469_20240528095138_database.sql
+SQL FILE SIZE: 3.16MB (3311777)
+SQL FILE TIME: 2024-05-28 09:51:47
+SQL RUNTIME: 1.46 sec.
+
+********************************************************************************
+ARCHIVE (ZIP):
+********************************************************************************
+ARCHIVE DIR:  /home/u401956558/domains/adeocreative.net/public_html/LilyBee
+ARCHIVE FILE: 20240528_lilybee_176e6ba9b42988f22469_20240528095138_archive.zip
+FILTERS: *OFF*
+DIRS:
+	not set
+FILES:
+	not set
+EXTS:  not set
+----------------------------------------
+COMPRESSING
+SIZE:	297.83MB
+STATS:	Dirs 1,630 | Files 11,200
+SQL ADDED: 20240528_lilybee_176e6ba9b42988f22469_20240528095138_database.sql
+ZipArchive Object
+(
+    [lastId] => 12829
+    [status] => 0
+    [statusSys] => 0
+    [numFiles] => 12830
+    [filename] => /home/u401956558/domains/adeocreative.net/public_html/LilyBee/wp-content/backups-dup-lite/tmp/20240528_lilybee_176e6ba9b42988f22469_20240528095138_archive.zip
+    [comment] => 
+)
+
+FILE ADDED TO ZIP: 12829
+COMPRESSION RESULT: '1'
+COMPRESSED SIZE: 175.06MB
+ARCHIVE RUNTIME: 12.24 sec.
+MEMORY STACK: 18MB
+building installer
+ARCHIVE CONSISTENCY TEST: PASS
+
+********************************************************************************
+INTEGRITY CHECKS:
+********************************************************************************
+SQL FILE: 3.16MB
+INSTALLER FILE: 73.47KB
+ARCHIVE FILE: 177.05MB 
+EXPECTED FILE/DIRECTORY COUNT: 12,830
+ACTUAL FILE/DIRECTORY COUNT: 12,829
+ARCHIVE CONSISTENCY TEST: Pass
+
+********************************************************************************
+RECORD ID:[1]
+TOTAL PROCESS RUNTIME: 14.63 sec.
+PEAK PHP MEMORY USED: 20MB
+DONE PROCESSING => 20240528_lilybee May 28, 2024 9:52 am
+

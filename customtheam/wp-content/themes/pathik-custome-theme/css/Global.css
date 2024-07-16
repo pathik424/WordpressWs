@@ -1,0 +1,203 @@
+ul { 
+    margin-bottom: 0; 
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+}
+p.text{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+.blacksection .redbox{
+    height: 83px;
+    width: 670px;
+    background-color: #FFD5DD;
+}
+.blacksection .redbox p{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+.mpuSetion .mpuspace{
+   height: 83px;
+    width: 670px;
+    background-color: #FFD5DD; 
+}
+.mpuSetion p{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+.sqspace {
+     height: 250px;
+    width: 250px;
+    background-color: #FFD5DD; 
+}
+.sqspace p{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+.topbarline img{
+    height: 34px;
+    width: 34px;
+}
+.readMoreBtn p{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21.17px;
+}
+/*featuredpageSection Css Start*/
+.featuredpageSection{
+    background: url(../images/Subtract.png) no-repeat;
+    background-repeat: no-repeat;
+    background-attachment: unset;
+    background-position: top -134px right;
+    margin-bottom: 44px;
+}
+.featuredpageSection h2{
+	font-size: 36px;
+    line-height: 24px;
+    font-weight: 700;
+}
+.featuredpagebox{
+	display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    column-gap: 22px;
+    row-gap: 50px;
+    z-index: 999;
+}
+.mostfeaSection {
+    background-color: #F6F6F6;
+    }
+.mostfeaSection .sideRoundImg{
+    background: url(../images/Subtractbottom.png) no-repeat;
+    background-repeat: no-repeat;
+    background-attachment: unset;
+    background-position: bottom -20px left -70px;
+}
+.mostfeaSection h2{
+    font-size: 36px;
+    line-height: 24px;
+    font-weight: 700;
+}
+.mostfeaSection .singlepostContent{
+    top: 16px;
+    left: 24px;
+    right: 24px;
+}
+.mostfeaSection .singlepostContent .bottomPostContent h3{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+}
+.mostfeaSection .singlepostContent .bottomPostContent p{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+.mostfeaSection .singlepostContent .bottomPostContent p{
+    width: 70%;
+}
+.mostfeaSection .singlepostContent .bottomPosts{ top: 180px; }
+/*.mpusection{ 
+	height: 670px;
+	width: 83px;
+}*/
+.mostreadpostsContent{
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    column-gap: 22px;
+    row-gap: 50px;
+    z-index: 999;
+}
+.loadmore{
+    background-color: #FECC01;
+    padding: 12px 24px;
+        border: none;
+    border-radius: 34px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+}
+/*featuredpageSection Css Start*/
+@media only screen and (max-width: 991px){
+    .mpuSetion { display: none !important; }
+    .blacksection{ display: none !important; }
+    .sqspace{ display: none !important; }
+    .featuredpagebox {
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+    column-gap: 22px;
+    row-gap: 50px;
+    z-index: 999;
+}
+.mostfeaSection .sideRoundImg{
+    background: none;
+}
+.mostreadpostsContent{
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+    column-gap: 22px;
+    row-gap: 50px;
+    z-index: 999;
+}
+}
+@media only screen and (max-width: 757px){
+    p.text{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+ul {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+}
+	.featuredpageSection a{
+		font-size: 12px;
+	    line-height: 20px;
+	    font-weight: 400;
+	}
+	.featuredpageSection h2{
+		font-size: 20px;
+	    line-height: 32px;
+	    font-weight: 700;
+	}
+	.featuredpageSection .topbarline img{
+		height: 24px;
+		width: 24px;
+	}
+    .mainImg{
+        height: 53px;
+        width: 94.26px;
+    }
+    .featuredpagebox {
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+    column-gap: 19px;
+    row-gap: 19px;
+    z-index: 999;
+    }
+    .mostfeaSection h2 {
+        font-size: 20px;
+        line-height: 32px;
+        font-weight: 700;
+    }
+    .reankingline img{
+        height: 24px;
+        width: 24px;
+    }
+    .topbarline  img{
+        height: 24px;
+        width: 24px;
+    }
+    .mostreadpostsContent {
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+    column-gap: 22px;
+    row-gap: 19px;
+    z-index: 999;
+}
+}

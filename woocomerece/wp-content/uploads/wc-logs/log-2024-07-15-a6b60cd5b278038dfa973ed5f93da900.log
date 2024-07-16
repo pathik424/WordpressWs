@@ -1,0 +1,4 @@
+2024-07-15T11:09:38+00:00 INFO Payment gateway enabled: "Direct bank transfer"
+2024-07-15T11:09:41+00:00 INFO Payment gateway enabled: "Check payments"
+2024-07-15T11:09:42+00:00 INFO Payment gateway enabled: "Cash on delivery"
+2024-07-15T11:09:44+00:00 INFO Payment gateway enabled: "iCredit Payment"

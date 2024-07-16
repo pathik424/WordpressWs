@@ -1,0 +1,660 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Woocommerce iCredit\n"
+"POT-Creation-Date: 2014-08-18 08:00+0200\n"
+"PO-Revision-Date: 2023-01-23 16:05+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: he_IL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: class-wc-gateway-icredit-payment.php:35
+#: class-wc-gateway-icredit-payment.php:127
+msgid "iCredit Payment"
+msgstr "תשלום באמצעות iCredit"
+
+#: class-wc-gateway-icredit-payment.php:118
+msgid "Enable/Disable"
+msgstr "הפעל / השבת"
+
+#: class-wc-gateway-icredit-payment.php:120
+msgid "Enable iCredit Payment"
+msgstr "אפשר תשלום באמצעות iCredit"
+
+#: class-wc-gateway-icredit-payment.php:124
+msgid "Payment Method Title"
+msgstr "שם אמצעי התשלום"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Edit iCredit payment title displayed on the checkout page"
+msgstr "זו הכותרת שהגולש יראה בזמן בחירת התשלום"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Edit the description of iCredit payment displayed in the checkout page"
+msgstr "ערוך את תיאור התשלום המוצג במסך הצ'קאאוט"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "This is the payment page token connected to the business terminal"
+msgstr "מזהה דף התשלום המשויך למסוף האמתי של העסק"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "This is a payment page token for tests"
+msgstr "מזהה דף תשלום המקושר למסוף טסטים"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Activate tokenization service in iCredit payment"
+msgstr "הפעלת שירות טוקניזציה (שמירת כרטיסים) בתשלום אייקרדיט באתר"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "This is the payment page token for a second terminal - according to the credit card company demands"
+msgstr "מזהה דף תשלום עבור מסוף נוסף לצורך חיוב טוקן - בהתאם לדרישות חברת האשראי"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Choose the status for orders with failed payments"
+msgstr "בחירת סטטוס עבור הזמנות שלא שולמו"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Maximun number of payments available for the customer on the payment page"
+msgstr "מס' התשלומים המקסימלי לבחירת הלקוח בדף התשלום"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Sets from which number of payment the transaction will be with credit payments"
+msgstr "הגדרת מס' התשלום המינימלי לפיו העסקה תהיה בתשלומי קרדיט"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Sets if the iCredit payment will be immidiate or on hold"
+msgstr "בחירת סוג העסקה - מידית או ממתינה J5"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Choose if J5 transactions can be charged from the order list with bulk - by changing order status"
+msgstr "האם יהיה ניתן לחייב את העסקאות הממתינות באמצעות סימון מרוכז במסך ההזמנות ושינוי הסטטוס בהתאם"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Define by which order status a J5 transactions will be charged from the order list bulk"
+msgstr "הגדרת סטטוס העסקה שלפיו הממתינה מחויבת"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Sets if the J5 charge will create a new sale in iCredit interface and will include order changes - items and total amount"
+msgstr "הגדרת סוג פעולת החיוב של העסקה הממתינה - האם תיווצר מכירה חדשה באייקרדיט ותכלול את שינויי ההזמנה - פריטים וסכום כולל"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Select the language of the invoice - 'By Country Code' will set Hebrew for Israel and English for other countries"
+msgstr "על-מנת ליצור מסמכים בעברית עבור לקוחות מישראל ומסמכים באנגלית עבור שאר הלקוחות, בחר לפי המדינה"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Select VAT Settings"
+msgstr "בחירת הגדרות מע\"מ"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Choose customer address to present on the invoice - shipping or billing?"
+msgstr "בחירת סוג הכתובת שתוצג בחשבונית - חיוב או משלוח?"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Save SKU for each type of shipping choice"
+msgstr "שמירת מק\"ט עבור כל אופציית משלוח"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Set item Variation invoice Display - combined in the item name or in a seperate row"
+msgstr "בחירת צורת הצגת הווריאציות של הפריטים - משורשר או בשורה חדשה"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Set which of the customer fields will be transmitted and presented on the invoice"
+msgstr "בחירת השדות של פרטי הלקוח להצגה שיעברו מהאתר ויוצגו בחשבונית"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Choose how to display the payment page"
+msgstr "בחירת סוג תצוגת דף התשלום"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Leave empty to use WooCommerce default thank you page (<strong>recommended</strong>)"
+msgstr "השאר ריק על-מנת להשתמש בדף התודה ברירת מחדל של ווקומרס."
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "This controls the option to do response logs."
+msgstr "הפעלת רישום לוגים נוספים."
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Set according to the website protocol"
+msgstr "יש להגדיר בהתאם לפרוטוקול האבטחה של האתר"
+
+#: class-wc-gateway-icredit-payment.php:126
+msgid "Leave empty to use plugin default (<strong>recommended</strong>)"
+msgstr "יש להשאיר ריק לצורך שימוש בברירת המחדל של הפלאגין (<strong>מומלץ</strong>)"
+
+#: class-wc-gateway-icredit-payment.php:133
+msgid "Pay via iCredit - Secure Credit Card Payment"
+msgstr "תשלום מאובטח בכרטיס אשראי דרך iCredit"
+
+#: class-wc-gateway-icredit-payment.php:137
+msgid "Group Private Token"
+msgstr "מזהה דף תשלום"
+
+#: class-wc-gateway-icredit-payment.php:169
+msgid "Use test mode"
+msgstr "הפעל מצב בדיקות"
+
+#: class-wc-gateway-icredit-payment.php:142
+msgid "Test Group Private Token (optional)"
+msgstr "מזהה דף תשלום - סביבת בדיקות (אופציונלי)"
+
+#: class-wc-gateway-icredit-payment.php:167
+msgid "Test Mode"
+msgstr "מצב בדיקה"
+
+#: class-wc-gateway-icredit-payment.php:147
+msgid "Max Payments"
+msgstr "מספר תשלומים מקסימלי"
+
+#: class-wc-gateway-icredit-payment.php:160
+msgid "Create Token"
+msgstr "יצירת טוקן לעסקה"
+
+#: class-wc-gateway-icredit-payment.php:174
+msgid "Document Language"
+msgstr "שפת המסמך"
+
+#: class-wc-gateway-icredit-payment.php:180
+msgid "Always Hebrew"
+msgstr "תמיד עברית"
+
+#: class-wc-gateway-icredit-payment.php:181
+msgid "Always English"
+msgstr "תמיד אנגלית"
+
+#: class-wc-gateway-icredit-payment.php:182
+msgid "By Country Code"
+msgstr "על-פי המדינה"
+
+#: class-wc-gateway-icredit-payment.php:190
+msgid "Exampt VAT"
+msgstr "פטור ממע\"מ"
+
+#: class-wc-gateway-icredit-payment.php:191
+msgid "Select VAT Settings."
+msgstr "בחר את הגדרות המע\"מ בהזמנה."
+
+# daniela msgid "Always Not Exempt"
+# daniela msgstr "תמיד חייב מע\"מ"
+#: class-wc-gateway-icredit-payment.php:195
+msgid "Always Exempt"
+msgstr "תמיד פטור ממע\"מ"
+
+#: class-wc-gateway-icredit-payment.php:197
+msgid "By Shipping Country"
+msgstr "על-פי המדינה בכתובת המשלוח"
+
+#: class-wc-gateway-icredit-payment.php:198
+msgid "By Billing Country"
+msgstr "על-פי המדינה בכתובת התשלום"
+
+#: class-wc-gateway-icredit-payment.php:199
+msgid "By Shipping or Billing Country"
+msgstr "על-פי המדינה בכתובת התשלום או המשלוח"
+
+#: class-wc-gateway-icredit-payment.php:207
+msgid "<h2>Payment View</h2>"
+msgstr "<h2>תצוגת התשלום</h2>"
+
+#: class-wc-gateway-icredit-payment.php:212
+msgid "PopUp"
+msgstr "חלון קופץ (פופאפ)"
+
+#: class-wc-gateway-icredit-payment.php:212
+msgid "PopUp Mode"
+msgstr "מצב פופ-אפ"
+
+#: class-wc-gateway-icredit-payment.php:217
+msgid "Redirect"
+msgstr "הפניה"
+
+#: class-wc-gateway-icredit-payment.php:218
+msgid "iFrame"
+msgstr "אייפריים"
+
+#: class-wc-gateway-icredit-payment.php:225
+msgid "iFrame Height"
+msgstr "גובה חלונית אייפריים"
+
+#: class-wc-gateway-icredit-payment.php:232
+msgid "iFrame Width"
+msgstr "רוחב מסגרת iFrame"
+
+#: class-wc-gateway-icredit-payment.php:239
+msgid "PopUp Height"
+msgstr "גובה החלון הצף"
+
+#: class-wc-gateway-icredit-payment.php:257
+msgid "Hide Items on Payment Page"
+msgstr "הסתר מוצרים בעמוד התשלום"
+
+#: class-wc-gateway-icredit-payment.php:263
+msgid "Thank You page URL"
+msgstr "כתובת דף תודה מותאמת"
+
+#: class-wc-gateway-icredit-payment.php:278
+msgid "First Name"
+msgstr "שם פרטי"
+
+#: class-wc-gateway-icredit-payment.php:284
+msgid "Last Name"
+msgstr "שם משפחה"
+
+#: class-wc-gateway-icredit-payment.php:290
+msgid "e-mail Address"
+msgstr "כתובת דוא\"ל"
+
+#: class-wc-gateway-icredit-payment.php:296
+msgid "Address"
+msgstr "כתובת"
+
+#: class-wc-gateway-icredit-payment.php:303
+msgid "City"
+msgstr "עיר"
+
+#: class-wc-gateway-icredit-payment.php:309
+msgid "Zip Code"
+msgstr "מיקוד"
+
+#: class-wc-gateway-icredit-payment.php:315
+msgid "Phone Number"
+msgstr "מספר טלפון"
+
+#: class-wc-gateway-icredit-payment.php:321
+msgid "Company Name"
+msgstr "שם החברה"
+
+#: class-wc-gateway-icredit-payment.php:327
+msgid "User Comments"
+msgstr "הערות הלקוח"
+
+#: Icredit_Admin_Fields.class.php
+msgid "yes"
+msgstr "כן"
+
+#: Icredit_Admin_Fields.class.php
+msgid "no"
+msgstr "לא"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Same Page"
+msgstr "אותו עמוד"
+
+#: Icredit_Admin_Fields.class.php
+msgid "General Settings"
+msgstr "הגדרות כלליות"
+
+#: Icredit_Admin_Fields.class.php
+msgid "View Settings"
+msgstr "הגדרות ויזואליים"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Transmitted Information"
+msgstr "מידע שנשלח"
+
+#: Icredit_Admin_Fields.class.php
+msgid "do logging"
+msgstr "לוגים"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Choose which credit cards icons will appear in checkout page"
+msgstr "הצגת אייקונים של כרטיסי אשראי בבחירת התשלום"
+
+#: Icredit_Admin_Fields.class.php
+msgid "This controls the option to do logs."
+msgstr "אפשרות להפעלת לוגים מורחבים."
+
+#: Icredit_Admin_Fields.class.php
+msgid "Icredit order payment details"
+msgstr "ריווחית סידור פרטי תשלום"
+
+#: Icredit_Admin_Fields.class.php
+msgid "No Data"
+msgstr "אין מידע"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Shipping SKU"
+msgstr "מק\"ט עבור משלוח"
+
+#: Icredit_Admin_Fields.class.php
+msgid "shipping zone sku - %s"
+msgstr "מק\"ט משלוח - %s"
+
+#: Icredit_Admin_Fields.class.php
+msgid "do you want th plugin get data from shipping address instead of billing?"
+msgstr "האם להשתמש בכתובת המשלוח לחשבונית?"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Order Address"
+msgstr "כתובת ההזמנה"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Documents"
+msgstr "מסמכים"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Credit Card"
+msgstr "פרטי כרטיס האשראי"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Actions"
+msgstr "פעולות"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Charge payment"
+msgstr "תשלום חיוב"
+
+#: Icredit_Admin_Fields.class.php
+msgid "%s Second Language"
+msgstr "%s שפה נוספת"
+
+#: Icredit_Admin_Fields.class.php
+msgid "%s Language Token"
+msgstr "טוקן שפה נוספת %s"
+
+#: Icredit_Admin_Fields.class.php
+msgid "bcc email"
+msgstr "מייל עותק מוסתר"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Change order status when payment fails"
+msgstr "סטטוס הזמנה שלא חויבה"
+
+#: WC_Gateway_ICredit.class.php
+msgid "Icredit Payment Failed"
+msgstr "התשלום בכרטיס האשראי נכשל"
+
+#: WC_Gateway_ICredit.class.php
+msgid "Error: credit card declined: %s"
+msgstr "שגיאה: כרטיס האשראי נכשל: %s"
+
+#: Icredit_Admin_Fields.class.php
+msgid "in chain"
+msgstr "בשרשור"
+
+#: Icredit_Admin_Fields.class.php
+msgid "under"
+msgstr "מתחת"
+
+#: gatewayeHelper.php
+msgid "Always Russian"
+msgstr "תמיד רוסית"
+
+#: gatewayeHelper.php
+msgid "Always French"
+msgstr "תמיד צרפתית"
+
+#: gatewayeHelper.php
+msgid "Always Spanish"
+msgstr "תמיד ספרדית"
+
+#: gatewayeHelper.php
+msgid "Always Arabic"
+msgstr "תמיד ערבית"
+
+#: gatewayeHelper.php
+msgid "Always Dutch"
+msgstr "תמיד הולנדית"
+
+#: gatewayeHelper.php
+msgid "Hebrew"
+msgstr "עברית"
+
+#: gatewayeHelper.php
+msgid "English"
+msgstr "אנגלית"
+
+#: gatewayeHelper.php
+msgid "Spanish"
+msgstr "ספרדית"
+
+#: gatewayeHelper.php
+msgid "French"
+msgstr "צרפתית"
+
+#: gatewayeHelper.php
+msgid "Arabic"
+msgstr "ערבית"
+
+#: gatewayeHelper.php
+msgid "Russian"
+msgstr "רוסית"
+
+#: gatewayeHelper.php
+msgid "Dutch"
+msgstr "הולנדית"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Languages"
+msgstr "שפות"
+
+#: Icredit_Admin_Fields.class.php
+msgid "%s token j5"
+msgstr "%s טוקן J5"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Failed Order Status"
+msgstr "סטטוס הזמנה שלא חויבה"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Payment Settings"
+msgstr "הגדרות תשלום"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Technical Settings"
+msgstr "הגדרות טכניות"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Logs"
+msgstr "לוגים"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Diners"
+msgstr "Diners"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Isracard"
+msgstr "Isracard"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Mastercard"
+msgstr "Mastercard"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Visa"
+msgstr "Visa"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Discover"
+msgstr "Discover"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Amex"
+msgstr "Amex"
+
+#: Icredit_Admin_Fields.class.php
+msgid "PCI"
+msgstr "PCI"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Second %s token"
+msgstr "מזהה דף %s שני"
+
+#: Icredit_Admin.class.php
+msgid "Payments: %s"
+msgstr "תשלומים: %s"
+
+#: Icredit_Admin.class.php
+msgid "Charge order by token"
+msgstr "חיוב הזמנה לפי טוקן"
+
+#: Icredit_Admin.class.php
+msgid "Charge J5"
+msgstr "חייב J5"
+
+#: Icredit_Admin.class.php
+msgid "This order already charged"
+msgstr "הזמנה זו כבר חויבה"
+
+#: registration.php
+msgid "Do you want to charge the order?"
+msgstr "האם לחייב את ההזמנה?"
+
+#: registration.php
+msgid "could not charge, try later"
+msgstr "לא יכול לטעון, נסה מאוחר יותר"
+
+#: class-wc-gateway-icredit-payment.php
+msgid "Description"
+msgstr "תיאור"
+
+#: class-wc-gateway-icredit-payment.php
+msgid "Second Group Private Token"
+msgstr "מזהה דף נוסף"
+
+#: class-wc-gateway-icredit-payment.php
+msgid "Sale Type Mode"
+msgstr "סוג העסקה"
+
+#: class-wc-gateway-icredit-payment.php
+msgid "Select 'By Country Code' to set Hebrew documents for Israel address and English documents for other countries."
+msgstr "על-מנת ליצור מסמכים בעברית עבור לקוחות מישראל ומסמכים באנגלית עבור שאר הלקוחות, בחר לפי המדינה."
+
+#: class-wc-gateway-icredit-payment.php
+msgid "Payment Window Mode"
+msgstr "מצב תצוגת התשלום"
+
+#: class-wc-gateway-icredit-payment.php
+msgid "IPN Protocol"
+msgstr "פרוטוקול IPN"
+
+#: class-wc-gateway-icredit-payment.php
+msgid "IPN Integration"
+msgstr "אינטגרציה של IPN"
+
+#: class-wc-gateway-icredit-payment.php
+msgid "IPN method"
+msgstr "שיטת שליחת IPN"
+
+#: class-wc-gateway-icredit-payment.php
+msgid "This sets the description of the payment in the checkout."
+msgstr "הכותרת שהמשתמש רואה בבחירת התשלום."
+
+#: class-wc-gateway-icredit-payment.php
+msgid "An error has occured while trying to charge the selected credit card."
+msgstr "אירעה שגיאה בניסיון חיוב של הכרטיס."
+
+#: class-wc-gateway-icredit-payment.php
+msgid "the reason: %s"
+msgstr "הסיבה: %s"
+
+#: gatewayHelper.php
+msgid "uknown error."
+msgstr "שגיאה לא ידועה."
+
+#: gatewayHelper.php
+msgid "Credit card declined."
+msgstr "שגיאה בסליקה - סירוב."
+
+#: class-wc-gateway-icredit-payment.php
+msgid "Logs for Icredit response"
+msgstr "לוגים"
+
+#: class-wc-gateway-icredit-payment.php
+msgid "Logs for Icredit requests"
+msgstr "לוגים של בקשות אל ריווחית"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Credit Icons"
+msgstr "הצגת אייקונים של אשראי"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Icredit requests"
+msgstr "בקשות לריווחית"
+
+#: Icredit_Admin_Fields.class.php
+msgid "IPN"
+msgstr "IPN"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Item Variation Display"
+msgstr "תצוגת וריאציות פריטים"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Combined"
+msgstr "משורשר"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Detailed"
+msgstr "מפורט"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Credit From Payments"
+msgstr "אשראי לתשלומים"
+
+#: Icredit_Admin_Fields.class.php
+msgid "IPN LOG"
+msgstr "IPN LOG"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Icredit requests LOG"
+msgstr "Icredit requests LOG"
+
+#: Icredit_Admin.class.php
+msgid "Order Paid"
+msgstr "ההזמנה שולמה"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Currency not supported"
+msgstr "סוג המטבע אינו נתמך"
+
+#: Icredit_Admin_Fields.class.php
+msgid "Error happen"
+msgstr "אירעה שגיאה"
+
+#: WC_Gateway_Icredit.class.php
+msgid "Transaction declined, please try again later or use another card"
+msgstr "העסקה לא אושרה על ידי חברת האשראי, אנא נסה שנית מאוחר יותר או השתמש בכרטיס אחר"
+
+#: WC_Gateway_Icredit.class.php
+msgid "Display Icredit Logo"
+msgstr "הצגת אייקון של ריווחית"
+
+#: WC_Gateway_Icredit.class.php
+msgid "Select the language the invoice should be created. Select 'By Country Code' to create Hebrew documents for Israel and English for any other country."
+msgstr "בחר את השפה שבה יש ליצור את החשבונית. בחר 'לפי קוד מדינה' כדי ליצור מסמכים בעברית עבור ישראל ואנגלית עבור כל מדינה אחרת."
+
+#: WC_Gateway_Icredit.class.php
+msgid "Billing Address"
+msgstr "כתובת לחיוב"
+
+#: WC_Gateway_Icredit.class.php
+msgid "Shipping Address"
+msgstr "כתובת למשלוח"
+
+#: WC_Gateway_Icredit.class.php
+msgid "Leave empty to use WooCommerce default thank you page (<strong>recommended</strong>)."
+msgstr "השאר ריק על-מנת להשתמש בדף התודה ברירת מחדל של ווקומרס."
+
+#: Icredit_Admin.class.php
+msgid "Payments"
+msgstr "תשלומים"
+
+#: Icredit_Admin.class.php
+msgid "Charge J5 By Bulk"
+msgstr "חיוב ממתינה דרך רשימה"
+
+#: Icredit_Admin.class.php
+msgid "Bulk J5 Charge Status"
+msgstr "סטטוס לחיוב ממתינה"
+
+#: Icredit_Admin.class.php
+msgid "Change J5 Details"
+msgstr "שינוי פרטי עסקת J5"

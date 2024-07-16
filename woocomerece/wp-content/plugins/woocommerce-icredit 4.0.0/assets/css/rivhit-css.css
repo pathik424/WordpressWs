@@ -1,0 +1,8 @@
+.wc-stripe-card-icons-container {position:relative;}
+.wc-stripe-card-icons-container ul {list-style-type:none!important;padding:0!important;margin:0!important;}
+.wc-stripe-card-icons-container ul li {display:inline-block;}
+.wc-stripe-card-icons-container ul li img {float: none!important;border: 0;padding: 0;max-height: 1.618em;}
+#iframeSamePageIcreditOverlay {position:fixed;z-index:1;background-color:rgba(0,0,0,0.7);left:0;top:0;width:100%;height:100%;display:none}
+#iframeSamePageIcredit {width: 700px;position: fixed;height: 800px;max-height: 100%;left: 0;right: 0;margin: 0 auto;top: 15%;z-index: 999;display:none;max-width:80%;}
+#iframeSamePageIcredit button {padding: 0 10px;background: #3D9CD2;color: #fff;position: absolute;z-index: 99;left: 0;top: 0;overflow: hidden;}
+#iframeSamePageIcredit > div {position:relative;max-width:100%;max-height:100%;}
